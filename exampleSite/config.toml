@@ -1,0 +1,37 @@
+# Your full site URL. Example:
+# "https://<username>.neocities.org/"
+baseURL = "https://example.com/"
+languageCode = "en-us"
+# Title of your site
+title = "Neofeed"
+# How many feed entries to load at once
+paginate = 6
+
+[taxonomies]
+tag = "tags"
+
+[author]
+# Your online name
+name = "Chihiro Ogino"
+# Your profile image. External link or relative to static/. Examples:
+# "https://imgur.com/123456788"
+# "image/me.webp"
+image = ""
+# Your about section
+about = "I'm dreaming, I'm dreaming! Come on, wake up! Wake up! Wake up..."
+
+[params]
+# Name of a file in static/skins/ without the ".css" extension
+skin = "macintosh"
+
+# Totally optional cool stuff
+# plausible = true
+# paymentPointer = "$wallet.provider.com/myspecialid123"
+
+[permalinks]
+# Format for feed entry links. You probably don't need to change this.
+feed = "/:title/"
+
+[outputs]
+# Output formats for your feed. You probably don't need to change this.
+  home = ["HTML", "JSON", "RSS"]
