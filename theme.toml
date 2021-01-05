@@ -1,0 +1,12 @@
+name = "Neofeed"
+license = "BSD-2-Clause"
+licenselink = "https://github.com/victoriadrake/neofeed/blob/master/LICENSE"
+description = "If Twitter and Geocities had a baby it would be nothing like this. This is way better."
+homepage = "https://github.com/victoriadrake/neofeed/"
+tags = ["personal","timeline","feed","mobile","light","dark","dark mode","customizable","plausible"]
+features = ["timeline","neocities","custom css","rss","json"]
+min_version = "0.41.0"
+
+[author]
+  name = "Victoria Drake"
+  homepage = "https://victoria.dev/feed/"
