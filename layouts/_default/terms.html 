@@ -1,0 +1,46 @@
+{{ define "main" }}
+<main aria-role="main">
+    <section class="container">
+        <div id="feed-container">
+            <div class="item">
+                <div class="item-content">
+                    <div class="flex item-head">
+                        <div class="flex left">
+                            <img id="author-img"
+                                src="{{ with $.Site.Author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
+                            <div>
+                                <p id="author-name">
+                                    {{ with $.Site.Author.name }}{{ . }}{{ else }}Anonymous{{ end }}
+                                    {{ $url := urls.Parse .Permalink }}
+                                    <a href="{{.Site.BaseURL}}">@{{ $url.Host }}</a>
+                                </p>
+                                <p class="meta">
+                                    {{ if isset .Params "date" }}
+                                    {{ .Date.Format (.Site.Params.dateFormat | default "Jan 02, 2006") }}{{ end }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="flex right meta">
+                            <a class="icon" href="{{.Permalink}}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="feather feather-link">
+                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="markdown substance">
+                        <p>
+                            {{ range .Site.Taxonomies.tags }}
+                            <a class="meta" href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>
+                            {{ end }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{{ end }}

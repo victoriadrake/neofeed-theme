@@ -1,0 +1,85 @@
+/* DEFAULT SKIN
+Made by Victoria Drake
+This is what you see if you don't set the "skin" parameter in config.
+*/
+
+:root {
+    --shadow-shape: 6px 8px 0px;
+    --color-shadow: rgba(0, 0, 0, .1);
+    --border-radius: 0.5rem;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+}
+
+/* Your profile image styles */
+
+#author-img {
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+div#author>img#author-img {
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+/* Floaty card effect */
+
+div.item {
+    box-shadow: var(--shadow-shape) var(--color-shadow);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-shadow);
+    border-radius: var(--border-radius);
+}
+
+/* Images in entries */
+
+.enclosure {
+    box-shadow: var(--shadow-shape) var(--color-shadow);
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+}
+
+/* Three dots separator */
+
+hr {
+    overflow: visible;
+    border: 0;
+    margin: 2em auto;
+    position: relative;
+    content: "";
+    background: var(--color-primary);
+    box-shadow: 3px 4px 0px var(--color-shadow);
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+}
+
+hr:before {
+    content: "";
+    background: var(--color-primary);
+    box-shadow: 3px 4px 0px var(--color-shadow);
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    position: absolute;
+    left: -1rem;
+}
+
+hr:after {
+    content: "";
+    background: var(--color-primary);
+    box-shadow: 3px 4px 0px var(--color-shadow);
+    display: block;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    position: absolute;
+    left: 1rem;
+}

@@ -1,0 +1,85 @@
+/* CLOUDY DAY SKIN 
+Made by Victoria Drake
+*/
+
+:root {
+    --shadow-shape: 0 20px 80px;
+    --color-shadow: rgba(0, 0, 0, .2);
+    --border-radius: 3rem;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !important;
+}
+
+a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--accent);
+}
+
+/* Your profile image styles */
+
+#author-img {
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+div#author>img#author-img {
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+/* Floaty card effect */
+
+@keyframes float {
+    0% {
+        transform: translatey(0%);
+    }
+    50% {
+        transform: translatey(-5%);
+    }
+    100% {
+        transform: translatey(0%);
+    }
+}
+
+div#author {
+    animation: float 5s ease-in-out infinite;
+}
+
+div.item {
+    box-shadow: var(--shadow-shape) var(--color-shadow);
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+}
+
+/* Images in entries */
+
+.enclosure {
+    box-shadow: var(--shadow-shape) var(--color-shadow);
+    background-color: var(--color-bg);
+    border-radius: var(--border-radius);
+}
+
+/* Cloud separator */
+
+hr {
+    overflow: visible;
+    border: 0;
+    position: relative;
+    font-size: 3rem;
+    display: block;
+    height: 3rem;
+    width: 3rem;
+}
+
+hr:before {
+    content: "☁";
+    font-size: 3rem;
+    display: block;
+    height: 3rem;
+    width: 3rem;
+    position: absolute;
+    top: -1rem;
+}

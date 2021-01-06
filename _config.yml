@@ -1,1 +1,1 @@
-exclude: ["exampleSite", "theme.toml"]
+exclude: ["archetypes", "exampleSite", "layouts", "theme.toml"]

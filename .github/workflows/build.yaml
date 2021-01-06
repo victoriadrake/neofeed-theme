@@ -1,0 +1,46 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  HUGO_ARGS: "--minify --environment production"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎 Check out master
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: 🚧 Check for configuration file
+        run: |
+          if [ -f "./config.toml" ]; then
+              echo "CONFIG_EXISTS=1" >> $GITHUB_ENV
+              echo "Hugo TOML configuration file found."
+          elif [ -f "./config.yaml" ]; then
+              echo "CONFIG_EXISTS=1" >> $GITHUB_ENV
+              echo "Hugo YAML configuration file found."
+          elif [ -f "./config.json" ]; then
+              echo "CONFIG_EXISTS=1" >> $GITHUB_ENV
+              echo "Hugo JSON configuration file found."
+          else
+              echo "🛑 No valid Hugo configuration file found."
+          fi
+        # Build and push the generated site to the repository
+      - name: 🚀 Build and deploy to GitHub Pages
+        uses: victoriadrake/hugo-latest-cd@master
+        if: env.CONFIG_EXISTS
+        # And deploy to Neocities
+      - name: 🐈 Deploy to Neocities
+        uses: bcomnes/deploy-to-neocities@master
+        if: ${{ env.NEOCITIES_API_TOKEN }}
+        with:
+          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
+          cleanup: false
+          dist_dir: docs

@@ -1,0 +1,88 @@
+/* COLORS
+Change your colors and sizes of things here.
+Probability of breaking layout: 10%
+*/
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Change me */
+        --accent: pink;
+        --color-primary: #24292e;
+        --color-secondary: rgb(100, 100, 100);
+        --color-bg: white;
+        --item-bg: #f5f5f5;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Change me */
+        --accent: teal;
+        --color-primary: white;
+        --color-secondary: #ccc;
+        --color-bg: #24292e;
+        --item-bg: #24292e;
+    }
+}
+
+:root {
+    --scrollbar-bg: var(--color-bg);
+    --scrollbar-thumb: var(--color-secondary);
+}
+
+/* SHAPES AND SIZES */
+
+:root {
+    --content-width: 40rem;
+}
+
+@media (max-width: 375px) {
+    :root {
+        --scale: 0.8;
+        --content-width: 90%;
+    }
+}
+
+@media (min-width: 460px) {
+    :root {
+        --scale: 1;
+    }
+}
+
+@media (min-width: 1000px) {
+    :root {
+        --scale: 1.1;
+    }
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+header>div {
+    max-width: 90rem;
+}
+
+#logo {
+    font-size: calc(24px * var(--scale));
+    font-weight: 800;
+}
+
+#logo img {
+    max-height: 2rem;
+}
+
+h2 {
+    font-size: calc(26px * var(--scale));
+    margin: 0;
+}
+
+h3 {
+    font-size: calc(20px * var(--scale));
+    margin: 0;
+}
+
+h1#profile-name {
+    font-size: calc(1.7rem * var(--scale));
+}

@@ -1,0 +1,38 @@
+<header>
+    <div class="header flex row">
+        <div class="header-item flex row">
+            <a id="logo" href="{{ .Site.BaseURL }}">
+                {{ if .Site.Params.logo }}
+                <img src="{{ .Site.Params.logo }}" />
+                {{ else }}
+                {{ $authorTitle := (printf "%s%s" .Site.Author.name "'s Neofeed")}}
+                <p>{{ .Site.Title | default $authorTitle }}</p>
+                {{ end }}
+            </a>
+        </div>
+        <div class="flex row" id="menu">
+            <nav aria-label="page menu" class="flex row">
+                <ul role="menubar" class="flex row">
+                    <li role="none">
+                        {{ $here := .Permalink | relURL }}
+                        {{ if .IsHome }}
+                        {{ $here }}
+                        {{ else }}
+                        <a class="menu-item" href="{{ .Site.BaseURL }}">
+                            {{ $url := urls.Parse .Site.BaseURL }}
+                            {{ $url.Host }}
+                        </a>
+                        {{ end }}
+                    </li>
+                    {{ range .AlternativeOutputFormats -}}
+                    <li role="none">
+                        <a class="menu-item" href="{{ .Permalink }}">
+                            {{.Name | lower }}
+                        </a>
+                    </li>
+                    {{ end -}}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
