@@ -7,7 +7,7 @@
 
 ✨ Neofeed is a beginner-friendly starter site to learn to use Hugo and generate awesome static websites with continuous delivery. This enriched Hugo theme helps you create a plain HTML static website. You can deploy to Neocities and GitHub Pages with continuous deployment workflows out of the box!
 
-🖌 Use CSS skins to switch it up and make it your own. Feeling brave? All the source code is at your fingertips. Go nuts!
+🖌 Use CSS skins to switch it up and make it your own. Feeling brave? All the source code is at your fingertips. Go nuts! 🥜
 
 ## Screenshots
 
@@ -41,7 +41,7 @@ make entry
 make ship
 ```
 
-A special [self-documenting Makefile](https://victoria.dev/blog/how-to-create-a-self-documenting-makefile/) makes this possible.
+A special [self-documenting Makefile](https://victoria.dev/blog/how-to-create-a-self-documenting-makefile/) makes this possible. Run `make help` in the repository root to see what you can do.
 
 ## Git Started
 
@@ -56,7 +56,7 @@ If you have [Git](https://git-scm.com/) and [Make](https://pubs.opengroup.org/on
 Then run:
 
 ```sh
-git clone https://github.com/<your username>/neofeed.git
+git clone https://github.com/<your username>/neocities-neofeed.git neofeed
 cd neofeed
 ```
 

@@ -23,8 +23,10 @@ about = "I'm dreaming, I'm dreaming! Come on, wake up! Wake up! Wake up..."
 [params]
 # Name of a file in static/skins/ without the ".css" extension
 skin = "macintosh"
+# Optional site card image for rich embeds
+# card = "/images/card.jpg"
 
-# Totally optional cool stuff
+# Totally optional cool stuff (see README for details)
 # plausible = true
 # paymentPointer = "$wallet.provider.com/myspecialid123"
 

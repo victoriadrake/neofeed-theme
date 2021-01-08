@@ -8,8 +8,8 @@ help: ## Show this help
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 entry: ## Launch $EDITOR with a new entry
-	if ! [ -d "./content/" ]; then mkdir content/; fi
-	printf '%b\n' "---\ntitle: $(shell uuidgen) \ndate: $(DATEOF) \ncategories: \ntags: \n---\n\n" > content/$(DATEOF).md
+	@if ! [ -d "./content/" ]; then mkdir content/; fi
+	@printf '%b\n' "---\ntitle: $(shell uuidgen) \ndate: $(DATEOF) \ncategories: \ntags: \n---\n\n" > content/$(DATEOF).md
 	$(EDITOR) content/$(DATEOF).md
 
 ship: ## One-shot git add all changes, commit and push your updates
