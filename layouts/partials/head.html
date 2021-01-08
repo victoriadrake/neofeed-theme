@@ -10,18 +10,18 @@
     {{ with .Site.Params.paymentPointer }}
     <meta name="monetization" content="{{ . }}">
     {{ end }}
-    <link rel="stylesheet" href="{{ "/css/base.css" | absURL}}" crossorigin="anonymous" media="screen">
-    <link rel="stylesheet" href="{{ "/css/variables.css" | absURL}}" crossorigin="anonymous" media="screen">
+    <link rel="stylesheet" href="{{ "css/base.css" | absURL}}" crossorigin="anonymous" media="screen">
+    <link rel="stylesheet" href="{{ "css/variables.css" | absURL}}" crossorigin="anonymous" media="screen">
     {{ $skin := printf "%s" (.Site.Params.skin | default "minimal") }}
-    <link rel="stylesheet" href="/skins/{{ $skin }}.css" crossorigin="anonymous" media="screen">
+    <link rel="stylesheet" href="{{ printf "%s%s%s" "skins/" $skin ".css" | absURL }}" crossorigin="anonymous" media="screen">
 
 
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="/favicon-128.png" sizes="128x128" />
+    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
+    <link rel="icon" type="image/png" href="{{ "favicon-196x196.png" | absURL }}" sizes="196x196" />
+    <link rel="icon" type="image/png" href="{{ "favicon-96x96.png" | absURL }}" sizes="96x96" />
+    <link rel="icon" type="image/png" href="{{ "favicon-32x32.png" | absURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ "favicon-16x16.png" | absURL }}" sizes="16x16" />
+    <link rel="icon" type="image/png" href="{{ "favicon-128.png" | absURL }}" sizes="128x128" />
     {{ with .Site.Params.plausible }}
     {{ $url := urls.Parse .Site.BaseURL }}
     <script async defer data-domain="{{ $url.Host }}" src="https://plausible.io/js/plausible.js"></script>

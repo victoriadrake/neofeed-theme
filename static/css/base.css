@@ -45,6 +45,10 @@ main {
     background-color: var(--color-bg);
 }
 
+article {
+    width: 100%;
+}
+
 footer {
     width: 100%;
     margin: 3rem auto;
