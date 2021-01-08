@@ -1,4 +1,4 @@
-# ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/master/images/littlestar.gif) Neofeed ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/master/images/littlestar.gif)
+# ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true) Neofeed ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true)
 
 (っ◔◡◔)っ A personal timeline for Neocities and GitHub Pages.
 
@@ -13,9 +13,9 @@
 
 You can make your Neofeed look like _anything you can imagine._ Here are a few options for you to use, change, or extend right out of the box.
 
-![Neofeed with "minimal" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/master/images/minimal.png)
-![Neofeed with "macintosh" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/master/images/macintosh.png)
-![Neofeed with "cloudy-day" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/master/images/cloudy-day-dark.png)
+![Neofeed with "minimal" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/minimal.png?raw=true)
+![Neofeed with "macintosh" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/macintosh.png?raw=true)
+![Neofeed with "cloudy-day" CSS skin](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/cloudy-day-dark.png?raw=true)
 
 ## The General Idea
 
