@@ -69,7 +69,7 @@ make entry
 make ship
 ```
 
-This will build your Neofeed and deploy it to Neocities using the [included GitHub Actions workflow](.github/workflows/build.yaml)!
+This will build your Neofeed and deploy it to Neocities using the [included GitHub Actions workflow](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/workflows/build.yaml)!
 
 Your site can also be served by Github Pages. Make it so by [configuring the publishing source](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) to be your `docs/` directory.
 
@@ -132,4 +132,4 @@ As a project, Neofeed has these main goals:
 2. Make it easy to participate in Neocities to encourage the creation of personal static sites.
 3. Demonstrate excellent open source community practices and repository maintenance practices.
 
-Any contribution that works towards these goals is welcome. See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for details.
+Any contribution that works towards these goals is welcome. See [CONTRIBUTING.md](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/CONTRIBUTING.md) for details.
