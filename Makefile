@@ -9,8 +9,9 @@ help: ## Show this help
 
 entry: ## Launch $EDITOR with a new entry
 	@if ! [ -d "./content/" ]; then mkdir content/; fi
-	@printf '%b\n' "---\ntitle: $(shell uuidgen) \ndate: $(DATEOF) \ncategories: \ntags: \n---\n\n" > content/$(DATEOF).md
-	$(EDITOR) content/$(DATEOF).md
+	@if ! [ -d "./content/posts/" ]; then mkdir content/posts/; fi
+	@printf '%b\n' "---\ntitle: $(shell uuidgen) \ndate: $(DATEOF) \ncategories: [\"note\"] \ntags: \n---\n\n" > content/posts/$(DATEOF).md
+	$(EDITOR) ./content/posts/$(DATEOF).md
 
 ship: ## One-shot git add all changes, commit and push your updates
 	git add .
@@ -25,6 +26,9 @@ gethugo: ## Get and install Hugo static site generator
 	cd .. && \
 	rm -rf tmp/
 	hugo version
+
+dev: ## Run the local development server
+	hugo serve --enableGitInfo --disableFastRender --environment development
 
 demo: ## Serve this site locally using the exampleSite
 	cd exampleSite/ && hugo server --themesDir ../.. -v -t neofeed
