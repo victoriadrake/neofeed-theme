@@ -31,9 +31,9 @@
 
 With just CSS you can make your Neofeed look like _anything you can imagine._ Here are a few options for you to use, change, or extend right out of the box.
 
-<img width="300" alt="Neofeed with minimal CSS skin" src="https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/minimal.png?raw=true" />
-<img width="300" alt="Neofeed with macintosh CSS skin" src="https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/macintosh.png?raw=true" />
-<img width="300" alt="Neofeed with cloudy-day CSS skin" src="https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/cloudy-day-dark.png?raw=true" />
+<img width="500" alt="Neofeed with macintosh CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/macintosh.png" />
+<img width="500" alt="Neofeed with minimal CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/minimal.png" />
+<img width="500" alt="Neofeed with cloudy-day CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/cloudy-day-dark.png" />
 
 ## The General Idea
 
