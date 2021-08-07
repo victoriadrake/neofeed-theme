@@ -1,0 +1,43 @@
+/* author h-card */
+
+section>div[rel=author] {
+    padding: var(--content-padding);
+    margin-top: 3rem;
+    width: calc(100% - calc(var(--content-padding)*2));
+}
+
+img.u-photo {
+    max-height: 50px;
+    margin: 0 1rem 0 0;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+div#card {
+    padding-left: 1rem;
+}
+
+@media (max-width: 414px) {
+    div[rel=author]>div {
+        flex-direction: column;
+    }
+    div[rel=author]>div>img.u-photo {
+        max-width: 120px;
+        margin: 0 auto !important;
+    }
+    div#card {
+        padding-left: 0 !important;
+    }    
+}
+
+div[rel=author]>div>img.u-photo {
+    max-height: 120px;
+    margin: 0 1rem 0 0;
+}
+
+h1.p-name {
+    color: var(--accent);
+    font-size: calc(1.7rem * var(--scale));
+    font-weight: 800;
+    margin: 0;
+}

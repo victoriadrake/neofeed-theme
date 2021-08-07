@@ -1,139 +1,16 @@
-{{ define "main" }}
-<main aria-role="main">
-    <section class="container">
-        <article>
-            <div id="author" class="item">
-                <div class="item-content flex row">
-
-                    <img id="author-img"
-                        src="{{ with $.Site.Author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
-                    <div id="profile" class="markdown">
-                        <h1 id="profile-name">{{ .Site.Author.name }}</h1>
-                        <p class="meta">
-                            {{ $url := urls.Parse .Permalink }}
-                            <a href="{{.Site.BaseURL}}">@{{ $url.Host }}</a>
-                        </p>
-                        {{ .Site.Author.about }}
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <hr />
-
-        <div id="feed-container">
-            <!-- This is your feed -->
-            {{ $paginator := .Paginate .Pages }}
-            {{ range $paginator.Pages }}
-            {{ if .Content }}
-            <div class="item">
-                <div class="item-content">
-                    <div class="flex item-head">
-                        <div class="flex left">
-                            <img id="author-img"
-                                src="{{ with $.Site.Author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
-                            <div>
-                                <p id="author-name">
-                                    {{ with $.Site.Author.name }}{{ . }}{{ else }}Anonymous{{ end }}
-                                    {{ $url := urls.Parse .Permalink }}
-                                    <a href="{{.Site.BaseURL}}">@{{ $url.Host }}</a>
-                                </p>
-                                <p class="meta">
-                                    {{ if isset .Params "date" }}
-                                    {{ $diff := div (sub now.Unix .Date.Unix) 86400 }}
-                                    {{ if eq $diff 0 }}
-                                    today-ish
-                                    {{ else }}
-                                    {{ if eq $diff -1 }}
-                                    a day from now
-                                    {{ else }}
-                                    {{ if lt $diff 0 }}
-                                    {{ mul -1 $diff }} days in the future
-                                    {{ else }}
-                                    {{ if eq $diff 1 }}
-                                    a day ago
-                                    {{ else }}{{ $diff }} days ago
-                                    {{ end }}
-                                    {{ end }}
-                                    {{ end }}
-                                    {{ end }}
-                                    {{ end }}
-                                </p>
-                            </div>
-                        </div>
-                        <div class="flex right meta">
-                            <a class="icon" href="{{.Permalink}}">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-link">
-                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="markdown substance">
-                        <p>
-                            {{ .Content | truncate 300 }}
-                            {{ $img := (.Resources.ByType "image").GetMatch "*" }}
-                            {{ with $img }}
-                            <img class="enclosure" src="{{ $img.Permalink }}">
-                            {{ end }}
-                            {{ range (.GetTerms "tags") }}
-                            <a class="meta" href="{{ .Permalink }}">#{{.LinkTitle}}</a>
-                            {{ end }}
-                            {{ if .Truncated }}
-                        </p>
-                        <div id="readmore">
-                            <p><a href="{{ .Permalink }}">Read More…</a>{{ end }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{ end }}
-            {{ end }}
-        </div>
-    </section>
-</main>
+{{ define "feed" }}
+<!-- any list of entries page -->
+<ul id="feed__ul" class="h-feed">
+  {{ range .Pages }}
+  {{ if .Content }}
+  {{ partial "li" . }}
+  {{ end }}
+  {{ end }}
+</ul>
 {{ end }}
 
 {{ define "footer" }}
-<footer class="flex col" id="footer">
-    <section class="container">
-        {{ $pag := $.Paginator }}
-        {{ if gt $pag.TotalPages 1 }}
-        <ul class="pagination">
-            {{ if $pag.HasPrev }}
-            <li class="page-item">
-                <a href="{{ $pag.First.URL }}" class="page-link" aria-label="First">
-                    <span aria-hidden="true">newest</span>
-                </a> /
-                <a href="{{ $pag.Prev.URL }}" class="page-link" aria-label="Previous">
-                    <span aria-hidden="true">newer</span>
-                </a>
-            </li>
-            {{ else }}
-            <li class="page-item">
-                <span class="page-link">first page</span>
-            </li>
-            {{ end }}
-            {{ if $pag.HasNext }}
-            <li class="page-item">
-                <a href="{{ $pag.Next.URL }}" class="page-link" aria-label="Next">
-                    <span aria-hidden="true">older</span>
-                </a> /
-                <a href="{{ $pag.Last.URL }}" class="page-link" aria-label="Last">
-                    <span aria-hidden="true">oldest</span>
-                </a>
-            </li>
-            {{ else }}
-            <li class="page-item">
-                <span class="page-link">last page</span>
-            </li>
-            {{ end }}
-        </ul>
-        {{ end }}
-    </section>
-    {{ partial "footer.html" . }}
+<footer>
+  {{ partial "pagination" . }}
 </footer>
 {{ end }}

@@ -1,0 +1,81 @@
+/* markdown content */
+
+.md p>a {
+    border-bottom: 1px solid var(--accent);
+}
+
+.md h1, .md h2, .md h3, .md h4 {
+    padding-top: 1rem;
+}
+
+.md p {
+    padding-top: 1.5rem;
+}
+
+.md p:last-child {
+    padding-bottom: 1.5rem !important;
+}
+
+.md ul, ol {
+    padding: 1rem;
+    padding-left: 2rem;
+}
+
+.md table {
+    width: 100%;
+}
+
+.md table, .md tr, .md td {
+    border-collapse: collapse;
+    border: 1px solid var(--color-secondary);
+}
+
+.properties {
+    color: var(--color-secondary);
+    font-size: calc(0.8rem * var(--scale));
+}
+
+blockquote {
+    font-style: italic;
+    border-left: 3px solid var(--color-secondary);
+    padding-top: 0 !important;
+    padding-left: 1rem;
+}
+
+blockquote > p:first-child {
+    padding-top: 0 !important;
+}
+
+/* code blocks */
+
+.md code {
+    font-size: calc(0.85rem * var(--scale));
+    padding: 0 0.25rem;
+}
+
+div.highlight {
+    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-bg);
+    scrollbar-width: thin;
+    margin: 1rem 0;
+    font-size: calc(0.8rem * var(--scale));
+}
+
+div.highlight > pre {
+    padding: 0.5rem;
+}
+
+div.highlight::-webkit-scrollbar {
+    width: 1em;
+}
+
+div.highlight::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+}
+
+div.highlight::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar-thumb);
+    border-radius: 6px;
+    border: 3px solid var(--scrollbar-border);
+}

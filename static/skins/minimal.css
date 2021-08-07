@@ -22,14 +22,9 @@ a {
     border: 2px solid var(--accent);
 }
 
-div#author>img#author-img {
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-}
-
 /* Floaty card effect */
 
-div.item {
+div.feed__li {
     box-shadow: var(--shadow-shape) var(--color-shadow);
     background-color: var(--color-bg);
     border: 1px solid var(--color-shadow);

@@ -1,42 +1,54 @@
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ $authorTitle := (printf "%s%s" .Site.Author.name "'s Neofeed")}}
-    <title>{{ .Site.Title | default $authorTitle }}</title>
-    <meta name="description" content="{{ .Site.Params.description | default $authorTitle }}">
-    {{ with .Site.Params.paymentPointer }}
-    <meta name="monetization" content="{{ . }}">
-    {{ end }}
-    <link rel="stylesheet" href="{{ "css/base.css" | absURL}}" crossorigin="anonymous" media="screen">
-    <link rel="stylesheet" href="{{ "css/variables.css" | absURL}}" crossorigin="anonymous" media="screen">
-    {{ $skin := printf "%s" (.Site.Params.skin | default "minimal") }}
-    <link rel="stylesheet" href="{{ printf "%s%s%s" "skins/" $skin ".css" | absURL }}" crossorigin="anonymous" media="screen">
+    <title>{{ .Site.Title }}</title>    
+    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.monetization }}<meta name="monetization" content="{{ . }}">{{ end }}
 
-
+    <!-- Place favicon files in ./static/ -->
+    {{ if (fileExists "favicon.ico" ) -}}
     <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
-    <link rel="icon" type="image/png" href="{{ "favicon-196x196.png" | absURL }}" sizes="196x196" />
-    <link rel="icon" type="image/png" href="{{ "favicon-96x96.png" | absURL }}" sizes="96x96" />
     <link rel="icon" type="image/png" href="{{ "favicon-32x32.png" | absURL }}" sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ "favicon-16x16.png" | absURL }}" sizes="16x16" />
-    <link rel="icon" type="image/png" href="{{ "favicon-128.png" | absURL }}" sizes="128x128" />
-    {{ with .Site.Params.plausible }}
-    {{ $url := urls.Parse .Site.BaseURL }}
-    <script async defer data-domain="{{ $url.Host }}" src="https://plausible.io/js/plausible.js"></script>
-    {{ end }}
-    <!-- Metadata -->
-    {{ $authorTitle := printf "%s%s" .Site.Author.name "'s Neofeed" }}
-    <meta property="og:title" content="{{ .Site.Title | default $authorTitle }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="{{ .Site.Params.description | default $authorTitle }}" />
-    <meta property="og:url" content="{{ .Site.BaseURL }}" />
-    <meta property="og:site_name" content="{{ .Site.Title | default $authorTitle }}" />
-    {{ with .Site.Params.card }}<meta property="og:image" content="{{ . }}" />{{ end }}
+    {{ else }}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 110 110%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
+    {{- end}}
 
+    <!-- IndieAuth -->
+    <link rel="authorization_endpoint" href="https://indieauth.com/auth">
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
+    {{ with .Site.Params.githubuser }}<link rel="me" href="https://github.com/{{ . }}" />{{ end }}
+    {{ with .Site.Params.twitteruser }}<link rel="me" href="https://twitter.com/{{ . }}" />{{ end }}
+    {{ with .Site.Params.mastodon }}<link rel="me" href="{{ . }}" />{{ end }}
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ "css/layout.css" | absURL}}" crossorigin="anonymous" media="screen">
+    {{ if .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}" crossorigin="anonymous" media="screen">
+    {{ end }}
+    {{ $skin := printf "%s" (.Site.Params.skin | default "minimal") }}
+    <link rel="stylesheet" href="{{ printf "%s%s%s" "skins/" $skin ".css" | absURL }}" crossorigin="anonymous" media="screen">
+    
+    <!-- Webmention -->
+    {{ with .Site.Params.webmentionUrl }}<link rel="webmention" href="{{ . }}" />{{ end }}
+    {{ with .Site.Params.pingbackUrl }}<link rel="pingback" href="{{ . }}" />{{ end }}
+    
+    <!-- Micro{p,s}ub -->
+    {{ with .Site.Params.micropubUrl }}<link rel="micropub" href="{{ . }}">{{ end }}
+    {{ with .Site.Params.microsubUrl }}<link rel="microsub" href="{{ . }}">{{ end }}
+    
+    <!-- Silos -->
+    <meta property="og:url" content="{{ .Site.BaseURL }}" />
+    <meta property="og:title" content="{{ .Site.Title }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    <meta property="og:type" content="website" />
+    {{ with .Site.Params.description }}<meta property="og:description" content="{{ . }}" />{{ end }}
+    {{ with .Site.Params.socialImage }}<meta property="og:image" content="{{ . }}" />{{ end }}
+    
+    <meta name="twitter:title" content="{{ .Site.Title }}" />
+    {{ with .Site.Params.description }}<meta name="twitter:description" content="{{ . }}" />{{ end }}
+    {{ with .Site.Params.socialImage }}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ .Site.Title | default $authorTitle }}" />
-    {{ with .Site.Params.card }}<meta name="twitter:image" content="{{ . }}" />{{ end }}
-    <meta name="twitter:description" content="{{ .Site.Params.description | default $authorTitle }}" />
+    <meta name="twitter:image" content="{{ . }}" />{{ end }}
 </head>

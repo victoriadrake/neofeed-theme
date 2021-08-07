@@ -1,51 +1,83 @@
 {{ define "main" }}
+<!-- content page -->
 <main aria-role="main">
-    <section class="container">
-        <div id="feed-container">
-            <div class="item">
-                <div class="item-content">
-                    <div class="flex item-head">
-                        <div class="flex left">
-                            <img id="author-img"
-                                src="{{ with $.Site.Author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
+    <section>
+        <ul id="feed__ul">
+            <li class="feed__li h-entry">
+                <div class="feed__content">
+                    <time class="hidden dt-published">{{ .Date }}</time>
+                    <div class="flex properties__row ">
+                        <div rel="author" class="flex left p-author h-card">
+                            <img class="u-photo"
+                                src="{{ with $.Site.Author.image }}{{ . | absURL }}{{ else }}https://picsum.photos/120.webp{{ end }}"
+                                alt="{{.Site.Author.name}}" id="author-img">
                             <div>
-                                <p id="author-name">
-                                    {{ with $.Site.Author.name }}{{ . }}{{ else }}Anonymous{{ end }}
-                                    {{ $url := urls.Parse .Permalink }}
-                                    <a href="{{.Site.BaseURL}}">@{{ $url.Host }}</a>
+                                <p rel="me" class="p-name" id="author-name">
+                                    {{ with .Params.author }}
+                                    {{ . }}
+                                    {{ else }}
+                                    {{ $.Site.Author.name }}
+                                    {{ end }}
                                 </p>
-                                <p class="meta">
+                                <p class="properties">
                                     {{ if isset .Params "date" }}
                                     {{ .Date.Format (.Site.Params.dateFormat | default "Jan 02, 2006") }}{{ end }}
                                 </p>
                             </div>
                         </div>
-                        <div class="flex right meta">
-                            <a class="icon" href="{{.Permalink}}">
+                        <div class="flex right properties">
+                          {{ if in .Params.Categories "reply" }}
+                          {{ with .Params.Reply }}
+                          <a href="{{ $.Params.Reply }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                              class="feather feather-corner-down-right">
+                              <polyline points="15 10 20 15 15 20"></polyline>
+                              <path d="M4 4v7a4 4 0 0 0 4 4h12"></path>
+                            </svg>
+                          </a>
+                          {{ end }}
+                          {{ end }}
+                            <a class="icon u-url" href="{{.Permalink}}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-link">
-                                    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                                    <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                                    stroke-linejoin="round" class="feather feather-bookmark">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                                 </svg>
                             </a>
                         </div>
                     </div>
-                    <div class="markdown substance">
-                        <p>
-                            {{.Content }}
-                            {{ $img := (.Resources.ByType "image").GetMatch "*" }}
-                            {{ with $img }}
-                            <img class="enclosure" src="{{ $img.Permalink }}">
+                    {{ if in .Params.Categories "note" }}
+                    <article class="md p-summary p-name e-content">
+                        {{ else if in .Params.Categories "reply" }}
+                        <article class="md p-summary e-content">
+                          <h2 class="p-name reply-context">
+                            {{ with .Params.Reply }}
+                            <a class="u-in-reply-to h-cite" href="{{ . }}">{{ $.Title }}</a>
+                            {{ else }}
+                            {{ .Title }}
                             {{ end }}
-                            {{ range (.GetTerms "tags") }}
-                            <a class="meta" href="{{ .Permalink }}">#{{.LinkTitle}}</a>
-                            {{ end }}
-                        </p>
-                    </div>
+                          </h2>
+                            {{ else }}
+                            <article class="md p-summary e-content">
+                              <h2 class="p-name">
+                                {{ .Title }}
+                              </h2>
+                                {{ end }}
+                                {{.Content }}
+                                <!-- Bridgy -->
+                                <a class="hidden" href="https://brid.gy/publish/mastodon"></a>
+                                <a class="hidden" href="https://brid.gy/publish/twitter"></a>
+                                <a class="hidden" href="https://fed.brid.gy/"></a>
+                                <data class="p-bridgy-omit-link" value="false"></data>
+                            </article>
+                            {{ partial "properties" . }}
                 </div>
-            </div>
-        </div>
+                {{ partial "webmentions" . }}
+                <!-- show Webmentions -->
+                <div id="webmentions"></div>
+            </li>
+        </ul>
     </section>
 </main>
 {{ end }}
