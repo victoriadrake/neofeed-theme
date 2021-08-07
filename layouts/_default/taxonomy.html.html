@@ -1,0 +1,16 @@
+{{ define "feed" }}
+<!-- list of tags or categories page -->
+<ul id="feed__ul">
+    <div class="feed">
+        <div class="feed__content">
+            {{ range .Data.Terms.Alphabetical }}
+            <li id="tag-list">
+                <div>
+                    <a class="properties" href="{{ .Page.Permalink }}">#{{ .Page.Title }}</a>
+                </div>
+            </li>
+            {{ end }}
+        </div>
+    </div>
+</ul>
+{{ end }}

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="{{ .Site.LanguageCode }}">
-    {{- partial "head.html" . -}}
-
-    <body>
-        {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- block "footer" . }}
-        {{- partial "footer.html" . -}}
-        {{- end }}
-    </body>
-
+{{- partial "head" . -}}
+<body>
+    {{- partial "header" . -}}
+    {{- block "main" . }}
+    <main aria-role="main">
+        <section>
+            {{- partial "h-card" . -}}
+            <hr />
+            {{- block "feed" . }}{{- end }}
+            {{- block "footer" . }}
+            {{- end }}
+        </section>
+    </main>
+    {{- end }}
+</body>
 </html>

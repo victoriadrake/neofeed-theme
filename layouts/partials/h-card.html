@@ -1,0 +1,34 @@
+<!-- representative h-card: https://microformats.org/wiki/h-card -->
+<div class="h-card" rel="author" id="author">
+    <div class="flex row">
+        <img class="u-photo" id="author-img" alt="{{ with .Site.Author.name }}{{ . }}{{ else }}author photo{{ end }}"
+            src="{{ with .Site.Author.image }}{{ . | absURL }}{{ else }}https://picsum.photos/120.webp{{ end }}">
+        <div id="card" class="md">
+            <h1 class="p-name">{{ with .Site.Author.name }}{{ . }}{{ end }}</h1>
+            <address class="properties">
+                {{ $url := urls.Parse .Permalink }}
+                <a class="u-url u-uid" href="{{ .Permalink }}">{{ $url.Host }}</a>
+                {{ with .Site.Author.nickname }} {{ $.Site.Params.separator | default "∙" }}
+                <span class="p-nickname">{{.}}</span>
+                {{ end }}
+                {{ with .Site.Author.email }} {{ $.Site.Params.separator | default "∙" }}
+                <a class="u-email" href="mailto:{{ . }}">{{ . }}</a>
+                {{ end }}
+                {{ with .Site.Params.githubuser }} {{ $.Site.Params.separator | default "∙" }}
+                <a rel="me" href="https://github.com/{{ . }}">github</a>{{ end }}
+                {{ with .Site.Params.mastodon }} {{ $.Site.Params.separator | default "∙" }}
+                <a rel="me" href="{{ . }}">mastodon</a>{{ end }}
+                {{ with .Site.Params.twitteruser }} {{ $.Site.Params.separator | default "∙" }}
+                <a rel="me" href="https://twitter.com/{{ . }}">twitter</a>{{ end }}
+            </address>
+            <p class="p-note">
+                {{ $bio := "author/about.md" }}
+                {{ if (fileExists $bio) -}}
+                {{ readFile $bio | markdownify }}
+                {{ else }}
+                {{ .Site.Author.about }}
+                {{- end }}
+            </p>
+        </div>
+    </div>
+</div>

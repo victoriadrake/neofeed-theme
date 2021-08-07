@@ -1,0 +1,90 @@
+#wm-link {
+    margin: var(--content-margin);
+    font-size: 0.9rem;
+    border-radius: calc(var(--border-radius)*2);
+    background-color: var(--accent);
+    color: var(--color-bg);
+    padding: 0.25rem 0.5rem;
+    box-shadow: var(--shadow-shape) var(--color-shadow);
+}
+
+div#webmentions {
+    margin: var(--content-margin);
+    margin-bottom: 2rem;
+}
+
+#webmentions ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.webmention li {
+    margin: 1rem 0;
+}
+
+div.webmention {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 1rem 0 1rem 60px;
+}
+
+
+div.webmention__properties {
+    padding: 0 0 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    order: -1;
+    font-size: .9rem;
+}
+
+div.webmention__properties > a {
+    padding-right: 0.5rem;
+}
+
+img.webmention__author__img {
+    position: absolute;
+    top: 1.5rem;
+    left: 0;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+div.webmention__content {
+    font-size: .9rem;
+}
+
+#webmentions h2 {
+    font-size: calc(1.3em * var(--scale));
+}
+
+#counter {
+    position: absolute;
+    top: -3px;
+}
+
+.reacts {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.reacts > li, a.reaction {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    margin: 0 0 1rem 1rem;
+}
+
+a.reaction:hover {
+    border-bottom: none;
+}
+
+a.reaction {
+    text-shadow: -3px 2px var(--item-bg);
+}

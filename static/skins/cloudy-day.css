@@ -25,11 +25,6 @@ a {
     border: 2px solid var(--accent);
 }
 
-div#author>img#author-img {
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-}
-
 /* Floaty card effect */
 
 @keyframes float {
@@ -48,7 +43,7 @@ div#author {
     animation: float 5s ease-in-out infinite;
 }
 
-div.item {
+div.feed__li {
     box-shadow: var(--shadow-shape) var(--color-shadow);
     background-color: var(--color-bg);
     border-radius: var(--border-radius);
@@ -57,8 +52,6 @@ div.item {
 /* Images in entries */
 
 .enclosure {
-    box-shadow: var(--shadow-shape) var(--color-shadow);
-    background-color: var(--color-bg);
     border-radius: var(--border-radius);
 }
 

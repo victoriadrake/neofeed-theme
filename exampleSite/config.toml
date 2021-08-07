@@ -25,6 +25,8 @@ about = "I'm dreaming, I'm dreaming! Come on, wake up! Wake up! Wake up..."
 skin = "macintosh"
 # Optional site card image for rich embeds
 # card = "/images/card.jpg"
+# Optional custom CSS file
+# customCSS = "css/style.css" # relative to ./static/
 
 # Totally optional cool stuff (see README for details)
 # plausible = true
