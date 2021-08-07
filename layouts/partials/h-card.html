@@ -7,7 +7,8 @@
             <h1 class="p-name">{{ with .Site.Author.name }}{{ . }}{{ end }}</h1>
             <address class="properties">
                 {{ $url := urls.Parse .Permalink }}
-                <a class="u-url u-uid" href="{{ .Permalink }}">{{ $url.Host }}</a>
+                <a class="u-url u-uid" href="{{ with .Site.Author.domain }}{{.}}">{{ $.Site.Author.domain }}</a>
+                {{ else }}{{ $.Permalink }}">{{ $url.Host }}</a>{{ end }}
                 {{ with .Site.Author.nickname }} {{ $.Site.Params.separator | default "∙" }}
                 <span class="p-nickname">{{.}}</span>
                 {{ end }}
