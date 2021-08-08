@@ -11,26 +11,35 @@ paginate = 6
 tag = "tags"
 
 [author]
-# Your online name
-name = "Chihiro Ogino"
+name = "Chihiro Ogino" # Your online name
 # Your profile image. External link or relative to static/. Examples:
 # "https://imgur.com/123456788"
 # "image/me.webp"
 image = ""
-# Your about section
 about = "I'm dreaming, I'm dreaming! Come on, wake up! Wake up! Wake up..."
 
 [params]
 # Name of a file in static/skins/ without the ".css" extension
 skin = "macintosh"
-# Optional site card image for rich embeds
-# card = "/images/card.jpg"
-# Optional custom CSS file
-# customCSS = "css/style.css" # relative to ./static/
 
+#
 # Totally optional cool stuff (see README for details)
+#
+# socialImage = "static/img/social.png" # site image for rich embeds
+# customCSS = "css/style.css" # relative to ./static/
 # plausible = true
 # paymentPointer = "$wallet.provider.com/myspecialid123"
+# webmentionUrl = "https://webmention.io/example/webmention"
+# pingbackUrl = "https://webmention.io/example/xmlrpc"
+# micropubUrl = "https://example.com/.netlify/functions/micropub"
+# microsubUrl = "https://aperture.p3k.io/microsub/example"
+
+#
+# For IndieAuth and the author card
+#
+# githubuser = "chihiro"
+# twitteruser = "chihiro" # no @ in front
+# mastodon = "https://mastodon.technology/@chihiro" # full link to your instance profile
 
 [permalinks]
 # Format for feed entry links. You probably don't need to change this.

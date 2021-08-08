@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ .Site.Title }}</title>    
     {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.monetization }}<meta name="monetization" content="{{ . }}">{{ end }}
+    {{ with .Site.Params.paymentPointer }}<meta name="monetization" content="{{ . }}">{{ end }}
 
     <!-- Place favicon files in ./static/ -->
     {{ if (fileExists "favicon.ico" ) -}}
@@ -51,4 +51,7 @@
     {{ with .Site.Params.socialImage }}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="{{ . }}" />{{ end }}
-</head>
+    {{ with .Site.Params.twitteruser }}
+    <meta name="twitter:creator" content="{{ . }}" />
+    {{ end }}
+  </head>
