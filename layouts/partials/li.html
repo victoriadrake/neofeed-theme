@@ -47,9 +47,6 @@
       {{ end }}
           {{ .Content | truncate 300 }}
           {{ $img := (.Resources.ByType "image").GetMatch "*" }}
-          {{ with $img }}
-          <p><img class="enclosure" src="{{ $img.Permalink }}"></p>
-          {{ end }}
           {{ if .Truncated }}
           <div id="open">
             <a href="{{ .Permalink }}" class="properties"><strong>[ open me ]</strong></a>
