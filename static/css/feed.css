@@ -33,6 +33,7 @@ li.feed__li {
     list-style-type: none;
     position: relative;
     margin: var(--item-margin) 0;
+    margin-bottom: calc(var(--item-margin) * 2);
     z-index: 2;
 }
 

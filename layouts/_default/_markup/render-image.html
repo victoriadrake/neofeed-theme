@@ -1,3 +1,2 @@
 {{ $img := ($.Page.Resources.ByType "image").GetMatch .Destination }}
-
 <img class="enclosure" src="{{ with $img }}{{ $img.Permalink }}{{ else }}{{ .Destination }}{{ end }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />

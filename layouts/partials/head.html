@@ -2,56 +2,51 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>    
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
-    {{ with .Site.Params.paymentPointer }}<meta name="monetization" content="{{ . }}">{{ end }}
+    <title>{{ .Site.Title }}</title>
+    {{ with .Site.Params.description }}
+    <meta name="description" content="{{ . }}">{{ end }} {{ with .Site.Params.paymentPointer }}
+    <meta name="monetization" content="{{ . }}">{{ end }}
 
     <!-- Place favicon files in ./static/ -->
-    {{ if (fileExists "favicon.ico" ) -}}
-    <link rel="shortcut icon" href="{{ "favicon.ico" | absURL }}">
-    <link rel="icon" type="image/png" href="{{ "favicon-32x32.png" | absURL }}" sizes="32x32" />
-    <link rel="icon" type="image/png" href="{{ "favicon-16x16.png" | absURL }}" sizes="16x16" />
-    {{ else }}
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 110 110%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>">
-    {{- end}}
+    {{ if (fileExists "static/favicon.ico" ) -}}
+    <link rel="shortcut icon" href="{{ " favicon.ico " | absURL }}">
+    <link rel="icon" type="image/png" href="{{ " favicon-32x32.png " | absURL }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ " favicon-16x16.png " | absURL }}" sizes="16x16" /> {{ else }}
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 110 110%22><text y=%22.9em%22 font-size=%2290%22>⭐</text></svg>"> {{- end}}
 
     <!-- IndieAuth -->
     <link rel="authorization_endpoint" href="https://indieauth.com/auth">
-    <link rel="token_endpoint" href="https://tokens.indieauth.com/token">
-    {{ with .Site.Params.githubuser }}<link rel="me" href="https://github.com/{{ . }}" />{{ end }}
-    {{ with .Site.Params.twitteruser }}<link rel="me" href="https://twitter.com/{{ . }}" />{{ end }}
-    {{ with .Site.Params.mastodon }}<link rel="me" href="{{ . }}" />{{ end }}
+    <link rel="token_endpoint" href="https://tokens.indieauth.com/token"> {{ with .Site.Params.githubuser }}
+    <link rel="me" href="https://github.com/{{ . }}" />{{ end }} {{ with .Site.Params.twitteruser }}
+    <link rel="me" href="https://twitter.com/{{ . }}" />{{ end }} {{ with .Site.Params.mastodon }}
+    <link rel="me" href="{{ . }}" />{{ end }}
 
     <!-- CSS -->
-    <link rel="stylesheet" href="{{ "css/layout.css" | absURL}}" crossorigin="anonymous" media="screen">
-    {{ if .Site.Params.customCSS }}
-    <link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}" crossorigin="anonymous" media="screen">
-    {{ end }}
-    {{ $skin := printf "%s" (.Site.Params.skin | default "minimal") }}
-    <link rel="stylesheet" href="{{ printf "%s%s%s" "skins/" $skin ".css" | absURL }}" crossorigin="anonymous" media="screen">
-    
+    <link rel="stylesheet" href="{{ " css/layout.css " | absURL}}" crossorigin="anonymous" media="screen"> {{ if .Site.Params.customCSS }}
+    <link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}" crossorigin="anonymous" media="screen"> {{ end }} {{ $skin := printf "%s" (.Site.Params.skin | default "minimal") }}
+    <link rel="stylesheet" href="{{ printf " %s%s%s " "skins/ " $skin ".css " | absURL }}" crossorigin="anonymous" media="screen">
+
     <!-- Webmention -->
-    {{ with .Site.Params.webmentionUrl }}<link rel="webmention" href="{{ . }}" />{{ end }}
-    {{ with .Site.Params.pingbackUrl }}<link rel="pingback" href="{{ . }}" />{{ end }}
-    
+    {{ with .Site.Params.webmentionUrl }}
+    <link rel="webmention" href="{{ . }}" />{{ end }} {{ with .Site.Params.pingbackUrl }}
+    <link rel="pingback" href="{{ . }}" />{{ end }}
+
     <!-- Micro{p,s}ub -->
-    {{ with .Site.Params.micropubUrl }}<link rel="micropub" href="{{ . }}">{{ end }}
-    {{ with .Site.Params.microsubUrl }}<link rel="microsub" href="{{ . }}">{{ end }}
-    
+    {{ with .Site.Params.micropubUrl }}
+    <link rel="micropub" href="{{ . }}">{{ end }} {{ with .Site.Params.microsubUrl }}
+    <link rel="microsub" href="{{ . }}">{{ end }}
+
     <!-- Silos -->
     <meta property="og:url" content="{{ .Site.BaseURL }}" />
     <meta property="og:title" content="{{ .Site.Title }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
-    <meta property="og:type" content="website" />
-    {{ with .Site.Params.description }}<meta property="og:description" content="{{ . }}" />{{ end }}
-    {{ with .Site.Params.socialImage }}<meta property="og:image" content="{{ . }}" />{{ end }}
-    
-    <meta name="twitter:title" content="{{ .Site.Title }}" />
-    {{ with .Site.Params.description }}<meta name="twitter:description" content="{{ . }}" />{{ end }}
-    {{ with .Site.Params.socialImage }}
+    <meta property="og:type" content="website" /> {{ with .Site.Params.description }}
+    <meta property="og:description" content="{{ . }}" />{{ end }} {{ with .Site.Params.socialImage }}
+    <meta property="og:image" content="{{ . }}" />{{ end }}
+
+    <meta name="twitter:title" content="{{ .Site.Title }}" /> {{ with .Site.Params.description }}
+    <meta name="twitter:description" content="{{ . }}" />{{ end }} {{ with .Site.Params.socialImage }}
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="{{ . }}" />{{ end }}
-    {{ with .Site.Params.twitteruser }}
-    <meta name="twitter:creator" content="{{ . }}" />
-    {{ end }}
-  </head>
+    <meta name="twitter:image" content="{{ . }}" />{{ end }} {{ with .Site.Params.twitteruser }}
+    <meta name="twitter:creator" content="{{ . }}" /> {{ end }}
+</head>

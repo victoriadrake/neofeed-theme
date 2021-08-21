@@ -3,7 +3,6 @@
 @import "md.css";
 @import "wm.css";
 @import "h-card.css";
-
 html {
     box-sizing: border-box;
     background-color: var(--color-bg);
@@ -65,7 +64,8 @@ img {
     max-height: 2rem;
 }
 
-h2, h2>a {
+h2,
+h2>a {
     font-size: calc(22px * var(--scale));
     margin: 0;
     color: var(--accent);
@@ -80,16 +80,14 @@ h3 {
 }
 
 hr {
-    overflow: visible;
-    border: 0;
-    position: relative;
+    display: none;
 }
 
-nav, footer {
+nav,
+footer {
     min-height: 4rem;
     background-color: transparent;
-    width: 100%;
-    max-width: 100vw;
+    max-width: 100%;
     margin: 0 auto;
     align-items: center !important;
 }

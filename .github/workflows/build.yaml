@@ -1,6 +1,8 @@
 name: Build and Deploy
 
 on:
+  schedule:
+    - cron: '42 13 * * *'
   push:
     branches:
       - master
