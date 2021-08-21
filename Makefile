@@ -32,4 +32,4 @@ dev: ## Run the local development server
 	hugo serve --enableGitInfo --disableFastRender --environment development
 
 demo: ## Serve this site locally using the exampleSite
-	cd exampleSite/ && hugo server --themesDir ../.. -v -t neocities-neofeed
+	cd exampleSite/ && hugo server --themesDir ../.. -v -t neofeed-theme
