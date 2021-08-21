@@ -2,11 +2,11 @@
 
 Thank you for considering contributing to this project! Many hands make light work, and we're glad to have you.
 
-Any contribution that works towards [these values](https://github.com/victoriadrake/neocities-neofeed#values) is welcome. Here are a couple ways you can help out.
+Any contribution that works towards [these values](https://github.com/victoriadrake/neofeed-theme#values) is welcome. Here are a couple ways you can help out.
 
 ## Open an Issue
 
-Please open an issue to ask questions, report bugs, troubleshoot the project, or discuss anything that might need fixing or updating. You can follow one of the [templates](https://github.com/victoriadrake/neocities-neofeed/issues/new/choose) to make sure you provide helpful information.
+Please open an issue to ask questions, report bugs, troubleshoot the project, or discuss anything that might need fixing or updating. You can follow one of the [templates](https://github.com/victoriadrake/neofeed-theme/issues/new/choose) to make sure you provide helpful information.
 
 ## Send a Pull Request
 

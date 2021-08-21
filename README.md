@@ -1,4 +1,4 @@
-# ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true) Neofeed ![Twinkling star](https://github.com/victoriadrake/neocities-neofeed/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true)
+# ![Twinkling star](https://github.com/victoriadrake/neofeed-theme/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true) Neofeed ![Twinkling star](https://github.com/victoriadrake/neofeed-theme/blob/379bdeb10c934ca8e96075543b51ad993be4e265/images/littlestar.gif?raw=true)
 
 (っ◔◡◔)っ A personal timeline for the IndieWeb that can deploy to Neocities and GitHub Pages.
 
@@ -31,9 +31,9 @@
 
 With just CSS you can make your Neofeed look like _anything you can imagine._ Here are a few options for you to use, change, or extend right out of the box.
 
-<img width="500" alt="Neofeed with macintosh CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/macintosh.png" />
-<img width="500" alt="Neofeed with minimal CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/minimal.png" />
-<img width="500" alt="Neofeed with cloudy-day CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neocities-neofeed/master/images/cloudy-day-dark.png" />
+<img width="500" alt="Neofeed with macintosh CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neofeed-theme/master/images/macintosh.png" />
+<img width="500" alt="Neofeed with minimal CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neofeed-theme/master/images/minimal.png" />
+<img width="500" alt="Neofeed with cloudy-day CSS skin" src="https://raw.githubusercontent.com/victoriadrake/neofeed-theme/master/images/cloudy-day-dark.png" />
 
 ## The General Idea
 
@@ -76,7 +76,7 @@ If you have [Git](https://git-scm.com/) and [Make](https://pubs.opengroup.org/on
 Then run:
 
 ```sh
-git clone https://github.com/<your username>/neocities-neofeed.git neofeed
+git clone https://github.com/<your username>/neofeed-theme.git neofeed
 cd neofeed
 ```
 
@@ -89,7 +89,7 @@ make entry
 make ship
 ```
 
-This will build your Neofeed and deploy it to Neocities using the [included GitHub Actions workflow](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/workflows/build.yaml)!
+This will build your Neofeed and deploy it to Neocities using the [included GitHub Actions workflow](https://github.com/victoriadrake/neofeed-theme/blob/master/.github/workflows/build.yaml)!
 
 Your site can also be served by Github Pages. Make it so by [configuring the publishing source](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) to be your `docs/` directory.
 
@@ -103,12 +103,12 @@ Add this theme to your Hugo site by running this command from the site's main fo
 
 ```sh
 cd <whatever you named your site folder>
-git submodule add https://github.com/victoriadrake/neocities-neofeed.git
+git submodule add https://github.com/victoriadrake/neofeed-theme.git
 ```
 
 #### 2. Update your `config` file
 
-Copy the [exampleSite configuration file](https://github.com/victoriadrake/neocities-neofeed/blob/master/exampleSite/config.toml) to your site's main folder. Update the settings as you like -- helpful comments are included.
+Copy the [exampleSite configuration file](https://github.com/victoriadrake/neofeed-theme/blob/master/exampleSite/config.toml) to your site's main folder. Update the settings as you like -- helpful comments are included.
 
 Be sure to replace `example.com` with your own domain throughout the file.
 
@@ -118,8 +118,8 @@ You can use the `make entry` command or manually [add some content](https://gohu
 
 When you're ready, you can deploy automatically with services like:
 
-- [Neocities](https://neocities.org/), either using the [included workflow](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/workflows/build.yaml) or drag-and-drop upload.
-- GitHub Actions can deploy to [GitHub Pages](https://pages.github.com/) using the [included workflow](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/workflows/build.yaml). Just [configure your publishing source](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) to be your `docs/` directory.
+- [Neocities](https://neocities.org/), either using the [included workflow](https://github.com/victoriadrake/neofeed-theme/blob/master/.github/workflows/build.yaml) or drag-and-drop upload.
+- GitHub Actions can deploy to [GitHub Pages](https://pages.github.com/) using the [included workflow](https://github.com/victoriadrake/neofeed-theme/blob/master/.github/workflows/build.yaml). Just [configure your publishing source](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) to be your `docs/` directory.
 - Other repository hosting services, like [GitLab Pages](https://docs.gitlab.com/ee/user/project/pages/) can also serve static sites.
 
 ## IndieWeb Features
@@ -131,7 +131,7 @@ Here are the features Neofeed currently supports:
 - Individual posts will render [Webmentions](https://www.w3.org/TR/webmention/) with support via [Webmention.io](https://webmention.io/)
 - Your posts can be automatically shared with other social media thanks to [Bridgy](https://brid.gy/) (see more about Publish (on your) Own Site, Syndicate Elsewhere [(POSSE)](https://indieweb.org/POSSE) on the IndieWebCamp wiki)
 - Your feed can be parsed by RSS and feed readers thanks to [h-card](https://microformats.org/wiki/h-card), [h-feed](https://microformats.org/wiki/h-feed), and [h-entry](https://microformats.org/wiki/h-entry) [microformats2](https://microformats.org/wiki/microformats2) markup
-- You can log into supported services using [IndieAuth](https://indieweb.org/IndieAuth) [`rel=me` links](https://indieweb.org/rel-me) (they're in the [head](https://github.com/victoriadrake/neocities-neofeed/blob/master/layouts/partials/head.html) file)
+- You can log into supported services using [IndieAuth](https://indieweb.org/IndieAuth) [`rel=me` links](https://indieweb.org/rel-me) (they're in the [head](https://github.com/victoriadrake/neofeed-theme/blob/master/layouts/partials/head.html) file)
 
 ### Different Post Types
 
@@ -211,4 +211,4 @@ As a project, Neofeed has these main goals:
 2. Make it easy to participate in Neocities to encourage the creation of personal static sites.
 3. Demonstrate excellent open source community practices and repository maintenance practices.
 
-Any contribution that works towards these goals is welcome. See [CONTRIBUTING.md](https://github.com/victoriadrake/neocities-neofeed/blob/master/.github/CONTRIBUTING.md) for details.
+Any contribution that works towards these goals is welcome. See [CONTRIBUTING.md](https://github.com/victoriadrake/neofeed-theme/blob/master/.github/CONTRIBUTING.md) for details.
