@@ -45,9 +45,9 @@
             {{ .Title }}
           </h2>
       {{ end }}
-          {{ .Content | truncate 300 }}
+          {{ .Summary | markdownify }}
           {{ $img := (.Resources.ByType "image").GetMatch "*" }}
-          {{ if .Truncated }}
+          {{ if .Truncated }}...
           <div id="open">
             <a href="{{ .Permalink }}" class="properties"><strong>[ open me ]</strong></a>
           </div>
