@@ -3,16 +3,15 @@ SHELL := /bin/bash
 
 DATEOF:=$(shell date +%FT%T)
 HUGO_VERSION:=$(shell curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep 'tag_name' | cut -d '"' -f 4 | cut -c 2-)
-POST_ID:=$(shell uuidgen)
 
 help: ## Show this help
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-entry: ## Launch $EDITOR with a new entry
+entry: ## Launch $EDITOR with a new entry with TITLE=
 	@if ! [ -d "./content/" ]; then mkdir content/; fi
 	@if ! [ -d "./content/posts/" ]; then mkdir content/posts/; fi
-	@printf '%b\n' "---\ntitle: $(POST_ID) \ndate: $(DATEOF) \ncategories: [\"note\"] \ntags: \n---\n\n" > content/posts/$(POST_ID).md
-	$(EDITOR) ./content/posts/$(POST_ID).md
+	@printf '%b\n' "---\ntitle: $(TITLE) \ndate: $(DATEOF) \ncategories: [\"note\"] \ntags: \n---\n\n" > content/posts/$(DATEOF)-$(shell printf "%q" "$(TITLE)").md
+	$(EDITOR) ./content/posts/$(DATEOF)-$(shell printf "%q" "$(TITLE)").md
 
 ship: ## One-shot git add all changes, commit and push your updates
 	git add .
@@ -32,4 +31,4 @@ dev: ## Run the local development server
 	hugo serve --enableGitInfo --disableFastRender --environment development
 
 demo: ## Serve this site locally using the exampleSite
-	cd exampleSite/ && hugo server --themesDir ../.. -v -t neofeed-theme
+	cd exampleSite/ && hugo server --themesDir ../.. -v -t neofeed
