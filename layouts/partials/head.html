@@ -6,6 +6,7 @@
     {{ with .Site.Params.description }}
     <meta name="description" content="{{ . }}">{{ end }} {{ with .Site.Params.paymentPointer }}
     <meta name="monetization" content="{{ . }}">{{ end }}
+    {{ if .Site.Params.plausible }}{{ partial "head/plausible.html" . }}{{ end }}
 
     <!-- Place favicon files in ./static/ -->
     {{ if (fileExists "static/favicon.ico" ) -}}
