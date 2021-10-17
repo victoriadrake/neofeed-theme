@@ -76,9 +76,7 @@ div.webmention__content {
 
 .reacts > li, a.reaction {
     display: inline-block;
-    height: 30px;
-    width: 30px;
-    margin: 0 0 1rem 1rem;
+    margin: 0 0.25rem;
 }
 
 a.reaction:hover {
