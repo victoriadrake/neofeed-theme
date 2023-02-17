@@ -4,17 +4,26 @@
             {{ if .Date }}
             <span class="dt-published hidden">{{ .Date }}</span>
             <a class="icon u-url" href="{{.Permalink}}">
-                {{ $diff := div (sub now.Unix .Date.Unix) 86400 }}
-                {{ if eq $diff 0 }}earlier today
-                {{ else }}
-                {{ if eq $diff -1 }}a day from now
-                {{ else }}
-                {{ if lt $diff 0 }}{{ mul -1 $diff }} days in the future
-                {{ else }}
-                {{ if eq $diff 1 }}a day ago
-                {{ else }}
-                {{ $diff }} days ago
-                {{ end }}{{ end }}{{ end }}{{ end }}
+                <noscript>
+                    {{ $diff := div (sub now.Unix .Date.Unix) 86400 }}
+                    {{ if eq $diff 0 }}earlier today
+                    {{ else }}
+                    {{ if eq $diff -1 }}a day from now
+                    {{ else }}
+                    {{ if lt $diff 0 }}{{ mul -1 $diff }} days in the future
+                    {{ else }}
+                    {{ if eq $diff 1 }}a day ago
+                    {{ else }}
+                    {{ $diff }} days ago
+                    {{ end }}{{ end }}{{ end }}{{ end }}
+                </noscript>
+                <script>
+                    // The last script element is the current one at the time of execution.
+                    var scriptNodes = document.getElementsByTagName('script');
+                    var scriptNode = scriptNodes[scriptNodes.length - 1];
+                    var parentNode = scriptNode.parentNode;
+                    parentNode.innerText = calcDateDiff({{ .Date.Unix }});
+                </script>
             </a>
             {{ end }}
         </span>
