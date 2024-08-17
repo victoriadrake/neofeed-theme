@@ -9,7 +9,7 @@
 </a>
 {{ end }}
 
-{{ if .Site.IsServer }}
+{{ if hugo.IsServer }}
 <script src="{{ print .Site.BaseURL }}/js/webmention.js" data-page-url="{{ print .Site.Author.domain .RelPermalink }}" data-wordcount="100"
     async></script>
 {{ else }}
