@@ -1,18 +1,18 @@
 <!-- representative h-card: https://microformats.org/wiki/h-card -->
 <div class="h-card" rel="author" id="author">
     <div class="flex row">
-        <img class="u-photo" id="author-img" alt="{{ with .Site.Author.name }}{{ . }}{{ else }}author photo{{ end }}"
-            src="{{ with .Site.Author.image }}{{ . | absURL }}{{ else }}https://picsum.photos/120.webp{{ end }}">
+        <img class="u-photo" id="author-img" alt="{{ with site.Params.author.name }}{{ . }}{{ else }}author photo{{ end }}"
+            src="{{ with site.Params.author.image }}{{ . | absURL }}{{ else }}https://picsum.photos/120.webp{{ end }}">
         <div id="card" class="md">
-            <h1 class="p-name">{{ with .Site.Author.name }}{{ . }}{{ end }}</h1>
+            <h1 class="p-name">{{ with site.Params.author.name }}{{ . }}{{ end }}</h1>
             <address class="properties">
                 {{ $url := urls.Parse .Permalink }}
-                <a class="u-url u-uid" href="{{ with .Site.Author.domain }}{{.}}">{{ $.Site.Author.domain }}</a>
+                <a class="u-url u-uid" href="{{ with site.Params.author.domain }}{{.}}">{{ site.Params.author.domain }}</a>
                 {{ else }}{{ $.Permalink }}">{{ $url.Host }}</a>{{ end }}
-                {{ with .Site.Author.nickname }} {{ $.Site.Params.separator | default "∙" }}
+                {{ with site.Params.author.nickname }} {{ $.Site.Params.separator | default "∙" }}
                 <span class="p-nickname">{{.}}</span>
                 {{ end }}
-                {{ with .Site.Author.email }} {{ $.Site.Params.separator | default "∙" }}
+                {{ with site.Params.author.email }} {{ $.Site.Params.separator | default "∙" }}
                 <a class="u-email" href="mailto:{{ . }}">{{ . }}</a>
                 {{ end }}
                 {{ with .Site.Params.githubuser }} {{ $.Site.Params.separator | default "∙" }}
@@ -27,7 +27,7 @@
                 {{ if (fileExists $bio) -}}
                 {{ readFile $bio | markdownify }}
                 {{ else }}
-                {{ .Site.Author.about }}
+                {{ site.Params.author.about }}
                 {{- end }}
             </p>
         </div>

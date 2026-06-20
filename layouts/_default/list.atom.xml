@@ -15,16 +15,16 @@
   <link href="{{ .Permalink }}feed.xml" rel="self"/>
   <link href="{{ .Permalink }}"/>{{ if not .Date.IsZero }}
   <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>{{ end }}
-  <id>{{ .Permalink }}</id>{{ with .Site.Author.name }}
+  <id>{{ .Permalink }}</id>{{ with site.Params.author.name }}
   <author>
-    <name>{{.}}</name>{{ with $.Site.Author.email }}
+    <name>{{.}}</name>{{ with site.Params.author.email }}
     <email>{{.}}</email>{{end}}
   </author>{{end}}
   <generator>Hugo -- gohugo.io</generator>{{ range $pages }}
   <entry>
     {{ `<title type="html"><![CDATA[` | safeHTML }}{{ .Title }}]]></title>
     <link href="{{ .Permalink }}"/>
-    <id>{{ .Permalink }}</id>{{ with $.Site.Author.name }} 
+    <id>{{ .Permalink }}</id>{{ with site.Params.author.name }} 
     <author>
       <name>{{.}}</name>
     </author>{{end}}

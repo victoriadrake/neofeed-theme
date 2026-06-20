@@ -1,6 +1,6 @@
 {{- $.Scratch.Add "index" slice -}}
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections -}}
 {{- range $pages -}}
-{{- $.Scratch.Add "index" (dict "uri" .Permalink "author" .Site.Author "site" .Site.BaseURL "title" .Title "date" .Date "content" .Plain "tags" .Params.tags "categories" .Params.tags) -}}
+{{- $.Scratch.Add "index" (dict "uri" .Permalink "author" site.Params.author "site" .Site.BaseURL "title" .Title "date" .Date "content" .Plain "tags" .Params.tags "categories" .Params.tags) -}}
 {{- end -}}
 {{- $.Scratch.Get "index" | jsonify -}}

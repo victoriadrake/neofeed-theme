@@ -7,10 +7,10 @@
                     <div class="flex item-head">
                         <div class="flex left">
                             <img id="author-img"
-                                src="{{ with $.Site.Author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
+                                src="{{ with site.Params.author.image }}/{{ . }}{{ else }}https://picsum.photos/120.webp{{ end }}">
                             <div>
                                 <p id="author-name">
-                                    {{ with $.Site.Author.name }}{{ . }}{{ else }}Anonymous{{ end }}
+                                    {{ with site.Params.author.name }}{{ . }}{{ else }}Anonymous{{ end }}
                                     {{ $url := urls.Parse .Permalink }}
                                     <a href="{{.Site.BaseURL}}">@{{ $url.Host }}</a>
                                 </p>

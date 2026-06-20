@@ -10,7 +10,7 @@ pagination.pagerSize = 6
 [taxonomies]
 tag = "tags"
 
-[author]
+[params.author]
 name = "Chihiro Ogino" # Your online name
 # Your profile image. External link or relative to static/. Examples:
 # "https://imgur.com/123456788"
