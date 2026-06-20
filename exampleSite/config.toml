@@ -48,3 +48,8 @@ feed = "/:title/"
 [outputs]
 # Output formats for your feed. You probably don't need to change this.
   home = ["HTML", "JSON", "RSS"]
+
+# use published module to include theme
+[module]
+[[module.imports]]
+  path = 'github.com/victoriadrake/neofeed-theme/v2'
