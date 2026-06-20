@@ -2,8 +2,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ .Site.Title }}</title>
-    {{ with .Site.Params.description }}
+    <title>{{ if and .Title (not .IsHome) }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <link rel="canonical" href="{{ .Permalink }}" />
+    {{ $pageDesc := cond (ne .Description "") .Description .Site.Params.description }}
+    {{ with $pageDesc }}
     <meta name="description" content="{{ . }}">{{ end }} {{ with .Site.Params.paymentPointer }}
     <meta name="monetization" content="{{ . }}">{{ end }}
     {{ if .Site.Params.plausible }}{{ partial "head/plausible.html" . }}{{ end }}
@@ -41,16 +43,20 @@
     <script src="/js/neofeed-utils.js"></script>
 
     <!-- Silos -->
-    <meta property="og:url" content="{{ .Site.BaseURL }}" />
-    <meta property="og:title" content="{{ .Site.Title }}" />
+    {{ $ogTitle := cond .IsHome .Site.Title (printf "%s | %s" .Title .Site.Title) }}
+    {{ $ogImage := .Params.socialImage | default .Site.Params.socialImage }}
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:title" content="{{ $ogTitle }}" />
     <meta property="og:site_name" content="{{ .Site.Title }}" />
-    <meta property="og:type" content="website" /> {{ with .Site.Params.description }}
-    <meta property="og:description" content="{{ . }}" />{{ end }} {{ with .Site.Params.socialImage }}
-    <meta property="og:image" content="{{ . }}" />{{ end }}
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" /> {{ with $pageDesc }}
+    <meta property="og:description" content="{{ . }}" />{{ end }} {{ with $ogImage }}
+    <meta property="og:image" content="{{ . | absURL }}" />{{ end }}
 
-    <meta name="twitter:title" content="{{ .Site.Title }}" /> {{ with .Site.Params.description }}
-    <meta name="twitter:description" content="{{ . }}" />{{ end }} {{ with .Site.Params.socialImage }}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="{{ . }}" />{{ end }} {{ with .Site.Params.twitteruser }}
-    <meta name="twitter:creator" content="{{ . }}" /> {{ end }}
+    <meta name="twitter:card" content="{{ if $ogImage }}summary_large_image{{ else }}summary{{ end }}" />
+    <meta name="twitter:title" content="{{ $ogTitle }}" /> {{ with $pageDesc }}
+    <meta name="twitter:description" content="{{ . }}" />{{ end }} {{ with $ogImage }}
+    <meta name="twitter:image" content="{{ . | absURL }}" />{{ end }} {{ with .Site.Params.twitteruser }}
+    <meta name="twitter:creator" content="@{{ . }}" /> {{ end }}
+
+    {{ partial "schema.html" . }}
 </head>
