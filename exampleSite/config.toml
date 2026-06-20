@@ -1,11 +1,11 @@
 # Your full site URL. Example:
 # "https://<username>.neocities.org/"
 baseURL = "https://example.com/"
-languageCode = "en-us"
+locale = "en-us"
 # Title of your site
 title = "Neofeed"
 # How many feed entries to load at once
-paginate = 6
+pagination.pagerSize = 6
 
 [taxonomies]
 tag = "tags"
