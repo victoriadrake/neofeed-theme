@@ -1,0 +1,23 @@
+name: test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        hugo: ['0.138.0', '0.163.0', 'latest']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Hugo ${{ matrix.hugo }}
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: ${{ matrix.hugo }}
+          extended: true
+      - name: Build exampleSite
+        run: cd exampleSite && hugo --themesDir ../..
